@@ -66,8 +66,8 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Zen Maru Gothic
   <h1>Astilbe LP<br>SPプロトタイプ</h1>
   <p>AIGAN × Hinata コラボアイウェアのLP。Figmaの確定デザイン（2026-09-28）から作ったダミーサイトです。</p>
   <div class="switch" role="group" aria-label="デザイン案">
-   <button type="button" id="v-comic" data-v="comic" aria-pressed="true"><span class="dot" style="background:#ff79a9;box-shadow:inset 0 0 0 2px #444142"></span>①コミック風</button>
-   <button type="button" id="v-bubble" data-v="bubble" aria-pressed="false"><span class="dot" style="background:linear-gradient(135deg,#e0438b,#0098ff 60%,#ffcb22)"></span>②バブル・ガーリー風</button>
+   <button type="button" id="v-bubble" data-v="bubble" aria-pressed="true"><span class="dot" style="background:linear-gradient(135deg,#e0438b,#0098ff 60%,#ffcb22)"></span>①バブル・ガーリー風</button>
+   <button type="button" id="v-comic" data-v="comic" aria-pressed="false"><span class="dot" style="background:#ff79a9;box-shadow:inset 0 0 0 2px #444142"></span>②コミック風</button>
   </div>
   <button type="button" class="tool" id="hs-toggle" aria-pressed="false">押せる場所を表示</button>
   <div class="note">・上部ナビ（LINE UP／LOOK／FAQ／購入する）で該当箇所へ移動<br>・ポイント訴求とオフショットは横スクロール<br>・ファーストビューを過ぎると追従購入ボタンが出る<br>・購入ボタンの遷移先はダミー</div>
@@ -124,7 +124,7 @@ fab.addEventListener('click',()=>say('購入ページへ移動します（ダミ
 document.querySelectorAll('.switch button').forEach(b=>b.addEventListener('click',()=>render(b.dataset.v)));
 const hst=document.getElementById('hs-toggle');hst.addEventListener('click',()=>{const on=hst.getAttribute('aria-pressed')!=='true';hst.setAttribute('aria-pressed',String(on));lp.classList.toggle('show',on);});
 addEventListener('resize',layoutFab);
-render(location.hash==='#bubble'?'bubble':'comic');
+render(location.hash==='#comic'?'comic':'bubble');
 </script>
 
 </body>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Astilbe LP プロトタイプ</title>
+<meta name="description" content="AIGAN×Hinata コラボアイウェアLP（SP）のデザイン確認用プロトタイプ">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap">
+<style>
+:root{color-scheme:light;--bg:#f3eee7;--ink:#4a3f3b;--sub:#8a7d74;--line:#e2d8cc;--card:#fffdf9;--acc:#c9286f;--frame:#2f2a28}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;-webkit-font-smoothing:antialiased}
+.app{min-height:100%;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:40px;padding:32px 24px;align-items:start}
+.side{grid-column:1;justify-self:end;max-width:260px;display:flex;flex-direction:column;gap:18px;padding-top:24px}
+.side h1{font-size:20px;line-height:1.5;margin:0;font-weight:700;text-wrap:balance}
+.side p{margin:0;font-size:13px;line-height:1.8;color:var(--sub)}
+.switch{display:flex;flex-direction:column;gap:8px}
+.switch button{font:inherit;font-size:14px;font-weight:700;text-align:left;padding:12px 16px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;display:flex;align-items:center;gap:10px}
+.switch button .dot{width:12px;height:12px;border-radius:50%;flex:none}
+.switch button[aria-pressed="true"]{border-color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
+.switch button:focus-visible,.tool:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.tool{font:inherit;font-size:12px;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--sub);cursor:pointer;align-self:flex-start}
+.tool[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.note{font-size:12px;color:var(--sub);line-height:1.8;border-top:1px dashed var(--line);padding-top:14px}
+.device{grid-column:2;position:relative;width:426px;height:min(898px,calc(100dvh - 64px));padding:12px;border-radius:52px;background:var(--frame);box-shadow:0 30px 60px -30px rgba(60,40,30,.45)}
+.screen{position:relative;width:402px;height:100%;border-radius:40px;overflow:hidden;background:#fff}
+.scroller{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;overscroll-behavior:contain}
+.scroller::-webkit-scrollbar{display:none}
+.lp{--k:1;position:relative;width:100%}
+.sec{position:relative;display:block;width:100%}
+.sec>img.bg{display:block;width:100%;height:auto}
+.sec.hdr{position:sticky;top:0;z-index:5}
+.rail{position:absolute;left:0;width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab;z-index:2}
+.rail::-webkit-scrollbar{display:none}
+.rail.drag{cursor:grabbing}
+.rail img{display:block;height:100%;width:auto;max-width:none;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.hs{position:absolute;display:block;border:0;padding:0;background:transparent;cursor:pointer;border-radius:999px;z-index:3}
+.hs:focus-visible{outline:2px solid #2d7ff9;outline-offset:2px}
+.lp.flash .hs,.lp.show .hs{background:rgba(45,127,249,.18);box-shadow:0 0 0 2px rgba(45,127,249,.8)}
+.lp.flash .hs{animation:fl .6s ease}
+@keyframes fl{from{opacity:1}to{opacity:.3}}
+.fab{position:absolute;z-index:6;border:0;padding:0;background:transparent;cursor:pointer;transition:opacity .25s,transform .25s;opacity:0;transform:translateY(12px);pointer-events:none}
+.fab.on{opacity:1;transform:none;pointer-events:auto}
+.fab img{display:block;width:100%;height:auto}
+.toast{position:absolute;left:50%;bottom:28px;z-index:9;transform:translate(-50%,20px);background:rgba(40,34,32,.92);color:#fff;font-size:13px;padding:10px 16px;border-radius:999px;white-space:nowrap;opacity:0;transition:.25s;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (max-width:760px){
+ .app{display:block;padding:0}
+ .side{max-width:none;padding:12px 16px;gap:10px;flex-direction:row;flex-wrap:wrap;align-items:center;position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+ .side h1,.side>p,.note,.tool{display:none}
+ .switch{flex-direction:row;width:100%}
+ .switch button{flex:1;padding:8px 10px;font-size:12px;justify-content:center}
+ .device{width:100%;height:auto;padding:0;border-radius:0;box-shadow:none;background:none}
+ .screen{width:100%;border-radius:0;height:calc(100dvh - 58px)}
+}
+@media (prefers-reduced-motion:reduce){.fab,.toast{transition:none}.lp.flash .hs{animation:none}}
+</style>
+
+</head>
+<body>
+<div class="app">
+ <aside class="side">
+  <h1>Astilbe LP<br>SPプロトタイプ</h1>
+  <p>AIGAN × Hinata コラボアイウェアのLP。Figmaの確定デザイン（2026-09-28）から作ったダミーサイトです。</p>
+  <div class="switch" role="group" aria-label="デザイン案">
+   <button type="button" id="v-comic" data-v="comic" aria-pressed="true"><span class="dot" style="background:#ff79a9;box-shadow:inset 0 0 0 2px #444142"></span>①コミック風</button>
+   <button type="button" id="v-bubble" data-v="bubble" aria-pressed="false"><span class="dot" style="background:linear-gradient(135deg,#e0438b,#0098ff 60%,#ffcb22)"></span>②バブル・ガーリー風</button>
+  </div>
+  <button type="button" class="tool" id="hs-toggle" aria-pressed="false">押せる場所を表示</button>
+  <div class="note">・上部ナビ（LINE UP／LOOK／FAQ／購入する）で該当箇所へ移動<br>・ポイント訴求とオフショットは横スクロール<br>・ファーストビューを過ぎると追従購入ボタンが出る<br>・購入ボタンの遷移先はダミー</div>
+ </aside>
+ <div class="device">
+  <div class="screen">
+   <div class="scroller" id="scroller"><div class="lp" id="lp"></div></div>
+   <button type="button" class="fab" id="fab" aria-label="購入する"><img alt=""></button>
+   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+ </div>
+</div>
+<script>
+const DATA={"comic": {"secs": [{"name": "01 HEADER", "y": 0, "h": 37, "img": "comic-s00.webp"}, {"name": "02 FIRST VIEW", "y": 37, "h": 800, "img": "comic-s01.webp"}, {"name": "03 ANCHOR NAV", "y": 837, "h": 91.5, "img": "comic-s02.webp"}, {"name": "04 LINE UP", "y": 928.5, "h": 455, "img": "comic-s03.webp"}, {"name": "09 CONCEPT", "y": 1383.5, "h": 836.7, "img": "comic-s04.webp"}, {"name": "ITEM DAILY", "y": 2220.1, "h": 1758.4, "img": "comic-s05.webp"}, {"name": "ITEM RELAX", "y": 3978.6, "h": 1718.9, "img": "comic-s06.webp"}, {"name": "ITEM DATE", "y": 5697.5, "h": 1723.9, "img": "comic-s07.webp"}, {"name": "ITEM WEEKEND", "y": 7421.4, "h": 1874.8, "img": "comic-s08.webp"}, {"name": "10 OFF SHOT", "y": 9296.1, "h": 550.8, "img": "comic-s09.webp"}, {"name": "11 MESSAGE", "y": 9846.9, "h": 1016, "img": "comic-s10.webp"}, {"name": "12 FAQ", "y": 10862.9, "h": 642.5, "img": "comic-s11.webp"}, {"name": "13 RELEASE", "y": 11505.4, "h": 500.5, "img": "comic-s12.webp"}, {"name": "15 FOOTER", "y": 12005.9, "h": 320.5, "img": "comic-s13.webp"}], "rails": [{"sec": 5, "y": 1210.8, "w": 984, "h": 494.67, "img": "comic-rail0.webp", "px": [1476, 741]}, {"sec": 6, "y": 1199.7, "w": 984, "h": 466.14, "img": "comic-rail1.webp", "px": [1476, 699]}, {"sec": 7, "y": 1177.8, "w": 984, "h": 493.1, "img": "comic-rail2.webp", "px": [1476, 739]}, {"sec": 8, "y": 1247.7, "w": 984, "h": 573.99, "img": "comic-rail3.webp", "px": [1476, 859]}, {"sec": 9, "y": 107.5, "w": 1607.15, "h": 358.32, "img": "comic-rail4.webp", "px": [2411, 541]}], "btn": [20, 551, 72, 72], "hot": [["LINE UP", 40, 861.5, 88, 41], ["LOOK", 136, 861.5, 68, 41], ["FAQ", 212, 861.5, 56, 41], ["購入する", 276, 861, 86, 42], ["購入する", 24, 3121.9, 94, 48], ["購入する", 146, 3121.9, 94, 48], ["購入する", 268, 3121.9, 94, 48], ["購入する", 24, 4880.3, 94, 48], ["購入する", 146, 4902.3, 94, 48], ["購入する", 268, 4880.3, 94, 48], ["購入する", 24, 6599.3, 94, 48], ["購入する", 146, 6599.3, 94, 48], ["購入する", 268, 6599.3, 94, 48], ["購入する", 24, 8323.1, 94, 48], ["購入する", 146, 8347.1, 94, 48], ["購入する", 268, 8345.1, 94, 48]]}, "bubble": {"secs": [{"name": "01 HEADER", "y": 0, "h": 37, "img": "bubble-s00.webp"}, {"name": "02 FIRST VIEW", "y": 37, "h": 800, "img": "bubble-s01.webp"}, {"name": "03 ANCHOR NAV", "y": 837, "h": 91, "img": "bubble-s02.webp"}, {"name": "04 LINE UP", "y": 928, "h": 515, "img": "bubble-s03.webp"}, {"name": "09 CONCEPT", "y": 1443, "h": 889.2, "img": "bubble-s04.webp"}, {"name": "ITEM DAILY", "y": 2332.1, "h": 2058.2, "img": "bubble-s05.webp"}, {"name": "ITEM RELAX", "y": 4390.4, "h": 1990.3, "img": "bubble-s06.webp"}, {"name": "ITEM DATE", "y": 6380.6, "h": 2021.2, "img": "bubble-s07.webp"}, {"name": "ITEM WEEKEND", "y": 8401.9, "h": 2145.2, "img": "bubble-s08.webp"}, {"name": "10 OFF SHOT", "y": 10547.1, "h": 600, "img": "bubble-s09.webp"}, {"name": "11 MESSAGE", "y": 11147.1, "h": 1009.5, "img": "bubble-s10.webp"}, {"name": "12 FAQ", "y": 12156.6, "h": 746, "img": "bubble-s11.webp"}, {"name": "13 RELEASE", "y": 12902.6, "h": 537, "img": "bubble-s12.webp"}, {"name": "15 FOOTER", "y": 13439.6, "h": 321, "img": "bubble-s13.webp"}], "rails": [{"sec": 5, "y": 1488.6, "w": 1026.15, "h": 500.66, "img": "bubble-rail0.webp", "px": [1540, 750]}, {"sec": 6, "y": 1474.5, "w": 1022.62, "h": 446.68, "img": "bubble-rail1.webp", "px": [1534, 670]}, {"sec": 7, "y": 1452.6, "w": 1026.15, "h": 499.66, "img": "bubble-rail2.webp", "px": [1540, 748]}, {"sec": 8, "y": 1521.5, "w": 1026.86, "h": 554.65, "img": "bubble-rail3.webp", "px": [1541, 830]}, {"sec": 9, "y": 200, "w": 1328, "h": 315, "img": "bubble-rail4.webp", "px": [1992, 475]}], "btn": [288, 603, 90, 41], "hot": [["LINE UP", 35.5, 861, 94, 43], ["LOOK", 137.5, 861, 73, 43], ["FAQ", 218.5, 861, 62, 43], ["購入する", 288.5, 864, 78, 37], ["購入する", 50, 3507.7, 90, 44], ["購入する", 50, 5587.9, 90, 44], ["購入する", 50, 7556.2, 90, 44], ["購入する", 50, 9646.4, 90, 44], ["購入する", 154.7, 3507.7, 90, 44], ["購入する", 154.7, 5587.9, 90, 44], ["購入する", 154.7, 7556.2, 90, 44], ["購入する", 154.7, 9646.4, 90, 44], ["購入する", 259.3, 3507.7, 90, 44], ["購入する", 259.3, 5587.9, 90, 44], ["購入する", 259.3, 7556.2, 90, 44], ["購入する", 259.3, 9646.4, 90, 44]]}};
+const NAV={"LINE UP":3,"LOOK":5,"FAQ":11};
+const lp=document.getElementById('lp'),sc=document.getElementById('scroller'),fab=document.getElementById('fab'),toast=document.getElementById('toast');
+let secEls=[],tt;
+function say(t){toast.textContent=t;toast.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('on'),1800);}
+function pct(v,t){return (v/t*100)+'%';}
+function render(v){
+ const d=DATA[v];lp.innerHTML='';secEls=[];
+ d.secs.forEach((s,i)=>{
+  const el=document.createElement('section');el.className='sec'+(i===0?' hdr':'');el.setAttribute('aria-label',s.name);
+  const im=new Image();im.className='bg';im.src=s.img;im.alt='';im.decoding='async';if(i>2)im.loading='lazy';
+  im.width=804;im.height=Math.round(s.h*2);el.appendChild(im);
+  d.rails.filter(r=>r.sec===i).forEach(r=>{
+   const w=document.createElement('div');w.className='rail';w.style.top=pct(r.y,s.h);w.style.height=pct(r.h,s.h);w.tabIndex=0;w.setAttribute('aria-label','横スクロール');
+   const ri=new Image();ri.src=r.img;ri.alt='';ri.draggable=false;w.appendChild(ri);el.appendChild(w);dragScroll(w);
+  });
+  d.hot.forEach(h=>{
+   const [label,x,y,hw,hh]=h;if(y<s.y||y>=s.y+s.h)return;
+   const b=document.createElement('button');b.type='button';b.className='hs';b.setAttribute('aria-label',label);
+   b.style.left=pct(x,402);b.style.width=pct(hw,402);b.style.top=pct(y-s.y,s.h);b.style.height=pct(hh,s.h);
+   b.addEventListener('click',e=>{e.stopPropagation();if(i===2){go(label in NAV?NAV[label]:12);}else say('購入ページへ移動します（ダミー）');});
+   el.appendChild(b);
+  });
+  lp.appendChild(el);secEls.push(el);
+ });
+ const [bx,,bw]=d.btn;const pad=v==='comic'?14:18;
+ fab.querySelector('img').src=v+'-btn.webp';fab.dataset.geo=JSON.stringify([bx-pad,bw+pad*2]);layoutFab();
+ sc.scrollTop=0;fab.classList.remove('on');
+ document.querySelectorAll('.switch button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===v)));
+}
+function layoutFab(){const s=sc.clientWidth/402,[x,bw]=JSON.parse(fab.dataset.geo||'[0,0]');fab.style.width=(bw*s)+'px';fab.style.left=(x*s)+'px';fab.style.bottom=(12*s)+'px';}
+function go(i){const el=secEls[i];if(!el)return;const hdr=secEls[0].offsetHeight;sc.scrollTo({top:el.offsetTop-hdr,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
+function dragScroll(el){let down=false,sx=0,sl=0,moved=false;
+ el.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;moved=false;sx=e.clientX;sl=el.scrollLeft;el.classList.add('drag');});
+ window.addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-sx;if(Math.abs(dx)>3)moved=true;el.scrollLeft=sl-dx;});
+ window.addEventListener('pointerup',()=>{down=false;el.classList.remove('drag');});
+ el.addEventListener('click',e=>{if(moved){e.stopPropagation();moved=false;}},true);}
+sc.addEventListener('scroll',()=>{const fv=secEls[1];if(!fv)return;fab.classList.toggle('on',sc.scrollTop>fv.offsetTop+fv.offsetHeight-sc.clientHeight*0.4);},{passive:true});
+lp.addEventListener('click',()=>{if(lp.classList.contains('show'))return;lp.classList.remove('flash');void lp.offsetWidth;lp.classList.add('flash');setTimeout(()=>lp.classList.remove('flash'),600);});
+fab.addEventListener('click',()=>say('購入ページへ移動します（ダミー）'));
+document.querySelectorAll('.switch button').forEach(b=>b.addEventListener('click',()=>render(b.dataset.v)));
+const hst=document.getElementById('hs-toggle');hst.addEventListener('click',()=>{const on=hst.getAttribute('aria-pressed')!=='true';hst.setAttribute('aria-pressed',String(on));lp.classList.toggle('show',on);});
+addEventListener('resize',layoutFab);
+render(location.hash==='#bubble'?'bubble':'comic');
+</script>
+
+</body>
+</html>
